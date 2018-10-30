@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Trip extends Component {
     constructor(props) {
@@ -8,8 +8,15 @@ class Trip extends Component {
         }
     }
 
-    toggle = () => {
+    toggleDetails = () => {
         this.setState({ isShowDetail : !this.state.isShowDetail })
+    }
+    sayHello = (name) => {
+        alert(name)
+    }
+
+    handleClick = () => {
+        this.props.getTrip(this.props.trip)
     }
     
     render() {
@@ -23,7 +30,14 @@ class Trip extends Component {
                         <p className="card-text">{trip.price} VND</p>
                         <button type="button" 
                             className="btn btn-primary"
-                            onClick={this.toggle} >{this.state.isShowDetail ? "Ẩn" : "Hiện"}</button>
+                            onClick={this.toggleDetails.bind(this)} >{this.state.isShowDetail ? "Ẩn" : "Hiện"}</button>
+
+                        <button type="button" 
+                            className="btn btn-success ml-2"
+                            data-toggle="modal"
+                            onClick={this.handleClick}
+                            data-target="#modelId"
+                            >Chi tiết</button>
                     </div>
 
                     <div className={`detail my-3 ${this.state.isShowDetail ? "d-block" : "d-none"}`} >
@@ -41,6 +55,7 @@ class Trip extends Component {
                         </p>
                     </div>
                 </div>
+                
             </div>
         );
     }

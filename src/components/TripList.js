@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Trip from './Trip'
 
 class TripList extends Component {
+
     render() {
         let  {trips} = this.props
-        console.log(trips)
         
         return (
             <div className="py-5">
@@ -16,7 +16,8 @@ class TripList extends Component {
                             trips.map((trip, index) => {
                                 return <Trip
                                     trip={trip}
-                                    key={index} />
+                                    key={index}
+                                    getTrip={this.props.getTrip} />
                         })}
                     </div>
                 </div>
